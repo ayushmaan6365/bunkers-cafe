@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+:root {
+  --brand: #d92632;
+  --brand-dark: #b31e28;
+  --brand-soft: #fdeef0;
+  --ink: #1c1c1e;
+  --muted: #6b7280;
+  --line: #f0e9e2;
+  --bg: #fffaf6;
+  --card: #ffffff;
+  --green: #2e7d32;
+  --green-bg: #e8f5e9;
+  --amber: #f59e0b;
+  --radius: 16px;
+  --shadow: 0 6px 24px rgba(20, 10, 10, 0.08);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Coupon style with authentic side punch cutouts as in FoodKart */
+.coupon-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #1c1c22, #3a2b12);
+  color: #fff;
+  border-radius: 14px;
+}
+.coupon-card::before, .coupon-card::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: var(--bg);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+.coupon-card::before { left: -12px; }
+.coupon-card::after { right: -12px; }
+
+/* Authentic veg and non-veg symbols from reference app */
+.vegmark {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--green);
+  border-radius: 3px;
+  position: relative;
+  vertical-align: -2px;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.vegmark::after {
+  content: "";
+  position: absolute;
+  inset: 2.5px;
+  background: var(--green);
+  border-radius: 50%;
+}
+.vegmark.nonveg {
+  border-color: #a33;
+}
+.vegmark.nonveg::after {
+  background: #a33;
+  border-radius: 0;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* Menu item card styling matching reference app with fluid responsive behavior */
+.mitem {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #f6efe8;
+  border-radius: 16px;
+  padding: 14px;
+  align-items: flex-start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .mitem {
+    gap: 16px;
+    padding: 16px;
+    align-items: center;
+  }
+}
+.mitem:hover {
+  box-shadow: 0 4px 16px rgba(20, 10, 10, 0.06);
+}
+
+.addbtn {
+  border: 1.5px solid var(--brand);
+  color: var(--brand);
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 6px 16px;
+  background: #fff;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+@media (min-width: 640px) {
+  .addbtn {
+    padding: 8px 20px;
+    font-size: 13.5px;
+  }
+}
+.addbtn:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+.qty-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-weight: 800;
+  font-size: 13px;
+  white-space: nowrap;
+}
+@media (min-width: 640px) {
+  .qty-pill {
+    gap: 12px;
+    padding: 7px 12px;
+    font-size: 14px;
+  }
+}
+.qty-pill button {
+  background: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Slide-out drawer */
+.drawer-content {
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
